@@ -9,9 +9,27 @@
 
 import requests, pandas, datetime, calendar
 
-activeUrl = https://www.nasdaq.com/market-activity/stocks/screener
-req = requests.get(activeUrl)
-data = req.text
-soup = BeautifulSoup(data)
+class DivCalendar:
+    #class attributes
+    calendar = []
+    url = 'https://api.nasdaq.com/api/calendar/dividends'
+    headers = {'Accept': 'application/jsopn, text/plain, */*', 
+                'DNT': "1", 
+                'Origin': 'https://www.nasdaq.com/',
+                'Sec-Fetch-Mode': 'cors', 
+                'User-Agent': 'Mozilla/5.0 (Macintosh)'}
+    
+    def __init__(self, year, month):
+        '''
+        Parameters
+        ----------
+        year: of type int
+        month: of type int
+        Returns
+        -------
+        Sets instance attributes for year and month of objects.
+        '''
 
-table = soup.find_all('div', attrs={&quot})
+        #instance attributes
+        self.year = int(year)
+        self.month = int(month)
