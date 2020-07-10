@@ -56,7 +56,7 @@ class DivCalendar:
         dictionary = page.json()
         return dictionary
 
-        def dateStr(self, day):
-            date_obj = datetime.date(self.year, self.month, day)
-            date_str = date_obj.strftime(format ='%Y-%m-%d')
-            return date_str
+    def dateStr(self, day):
+        date_obj = datetime.date(self.year, self.month, day)
+        date_str = date_obj.strftime(format ='%Y-%m-%d')
+        return date_str
