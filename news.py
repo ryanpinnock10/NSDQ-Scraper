@@ -60,3 +60,26 @@ class DivCalendar:
         date_obj = datetime.date(self.year, self.month, day)
         date_str = date_obj.strftime(format ='%Y-%m-%d')
         return date_str
+
+    def dict_to_df(self, dicti):
+        '''
+        Converts the JSON dictionary into a pandas dataframe.
+        Appends the dataframe to calendars class attribute
+
+        Parameters
+        ----------
+        dicti: Output from the scraper method as input .
+
+        Returns
+        -------
+        calendar: Dataframe of stocks with that exdividend date
+
+        Will append a dataframe to the calendars list (clas
+        attribute). otherwise, it will return an empty dataframe.
+        '''
+
+        rows = dicti.get('data').get('calendar').get('rows')
+        calendar = pandas.DataFame(rows)
+        self.calendar.append(calendar) 
+        #append df to calendars
+        return calendar
