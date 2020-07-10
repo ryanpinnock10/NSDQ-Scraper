@@ -83,3 +83,30 @@ class DivCalendar:
         self.calendar.append(calendar) 
         #append df to calendars
         return calendar
+
+    def calendar(self, day):
+        '''
+        Combines the date_str, scraper, and dict_to_df methods
+
+        Parameters
+        ----------
+        day: day of the month as a string/number.
+
+        Returns
+        -------
+        dictionary: Returns a JSON dictionary with keys
+        dictionary.keys() => data, message, status
+
+        Net Levels:
+        dictionary['data'].keys() => calendar, timeframe
+        dictionary['data']['calendar'].keys() => headers, rows
+        dictionary['data']['calendar]['headers'] => column names
+        dictionary['data']['calendar']['rows'] => dictionary list
+
+        '''
+
+        day = int(day)
+        date_str = self.date_str(day)
+        dictionary = self.scraper(date_str)
+        self.dict_to_df(dictionary)
+        reutrn dictionary
