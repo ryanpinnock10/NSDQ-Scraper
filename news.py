@@ -109,7 +109,7 @@ class DivCalendar:
         date_str = self.date_str(day)
         dictionary = self.scraper(date_str)
         self.dict_to_df(dictionary)
-        reutrn dictionary
+        return dictionary
 
 
     if __name__ == '__main__':
