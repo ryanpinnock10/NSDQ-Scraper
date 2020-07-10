@@ -110,3 +110,32 @@ class DivCalendar:
         dictionary = self.scraper(date_str)
         self.dict_to_df(dictionary)
         reutrn dictionary
+
+
+    if __name__ == '__main__':
+        year = 2020
+        month = 2
+
+    #get number of days in month
+        days_in_month = calendar.monthrange(year, month)[1]
+
+    #create calendar object 
+        feb = DivCalendar(year, month)
+
+    #define lambda function to iterate over list of days 
+        function = lambda days: feb.calendar(days)
+
+    #define list of ints between 1 and the # of days in month 
+        iterator = list(range(1, days_in_month+1))
+
+    #Scrape calendar for each day og the month
+        objecs = list(map(function, iterator))
+    
+    #Concatenate all the calendars int he class attribute 
+        cancat_df = pandas.concat(feb.calendars)
+
+    #Drop any rows with missing data
+        drop_df = concat_df.dropna(how = 'any')
+
+    # Set the dataframe's row index to the company name
+        final_df = drop_df.set_index('comapanyName')
