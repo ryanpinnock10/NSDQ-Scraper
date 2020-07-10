@@ -33,3 +33,30 @@ class DivCalendar:
         #instance attributes
         self.year = int(year)
         self.month = int(month)
+
+    def scraper(self, dateStr):
+        '''
+        Scrapes JSON object from page using requests module
+        Parameters
+        ----------
+        url: URL string
+        headers: Header info.
+        dateStr: string in yyyy-mm-dd format
+
+        Returns
+        -------
+        dictionary: Returns a JSON dictionary at a given URL.
+
+        Scraping information from JSON objects can be faster and more 
+        convenient than parsing HTML data using XPaths.
+        '''
+
+        params = {'date': dateStr}
+        page = requests.get(self.url, headers= self.headers, params=params)
+        dictionary = page.json()
+        return dictionary
+
+        def dateStr(self, day):
+            date_obj = datetime.date(self.year, self.month, day)
+            date_str = date_obj.strftime(format ='%Y-%m-%d')
+            return date_str
